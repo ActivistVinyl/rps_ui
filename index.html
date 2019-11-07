@@ -2,40 +2,28 @@
 <html>
 <head>
   <title>Rock, Paper, Scissors - Fight in the Console!</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
 <body>
-    <h1>Hola!</h1>
-    <p>Open the console to see round-by-round scoring.</p>
+    <div id="rps_buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>  
+  
+  
+
   <script>
 
-    var humanTeam = 0
-    var compTeam = 0
-
-    game()
-
-    function game () {
-            for (i = 0; humanTeam < 3 && compTeam < 3; i++) {
-            var playRoundOutput = playRound();
-            if (playRoundOutput==="won") {
-                    ++humanTeam
-                } else if (playRoundOutput === 'lost') {
-                    ++compTeam
-                }
-                console.log('Round ' + ( i + 1 ) + ':')
-                console.log('Human Score: ' + humanTeam)
-                console.log('Computer Score: ' + compTeam)
-                console.log(' ')
-            }
-        if (humanTeam === 3) {
-            alert('Congratulations! You won the best of 5 match!')
-        }
-        else if (compTeam === 3) {
-            alert('Oh no! You lost the best of 5 match :(')
-        }
-        else {
-            alert('Error bot')
-        }
-    }
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        var humPlay = button.id;
+        window.humanPlay = humPlay
+        playRound();
+    });
+    });
 
     function computerPlay() {
             var computerPick = [
@@ -51,7 +39,6 @@
 
     function playRound() {
         var computerSelection = computerPlay()
-        var humanPlay = prompt('Rock, Paper, Scissors?')
         var playerSelection = humanPlay.toLowerCase()
 
         switch (playerSelection + computerSelection) {
@@ -106,6 +93,9 @@
     }
 
 
+
+
+    
 
   </script>
 </body>
