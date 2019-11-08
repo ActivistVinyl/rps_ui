@@ -6,25 +6,50 @@
   <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
 <body>
-    <div id="rps_buttons">
+    <div id="rpsbuttons">
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
-    </div>  
+    </div>
+
+    <div id="scoreboard">
+        <ul>
+            <li id="humanscore">You: 0</li>
+            <li id="computerscore">Computer: 0</li>
+        </ul>
+    </div>
   
   
 
   <script>
 
-    const buttons = document.querySelectorAll('button');
+    // Sets score variables at the beginning.
+    var humanTeam = 0
+    var compTeam = 0
+
+    const rpsbuttons = document.getElementById("rpsbuttons");
+
+
+    // Listens for user click choice.
+    const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         var humPlay = button.id;
-        window.humanPlay = humPlay
+        window.humanPlay = humPlay;
         playRound();
+    // Stops game when someone wins.
+        if (humanTeam === 3) {
+            alert('Congratulations! You won the best of 5 match!')
+            rpsbuttons.parentNode.removeChild(rpsbuttons);
+        }
+        else if (compTeam === 3) {
+            alert('Oh no! You lost the best of 5 match :(')
+            rpsbuttons.parentNode.removeChild(rpsbuttons);}
+            
     });
     });
 
+    // Randomly chooses a computer option.
     function computerPlay() {
             var computerPick = [
                 "rock",
@@ -36,10 +61,13 @@
             return randomItem
         }
 
-
+    // Play an individual round of rock, paper, scissors.
     function playRound() {
         var computerSelection = computerPlay()
-        var playerSelection = humanPlay.toLowerCase()
+        var playerSelection = humanPlay;
+
+        const humanScore = document.querySelector('#humanscore');
+        const computerScore = document.querySelector('#computerscore');
 
         switch (playerSelection + computerSelection) {
         case "rockrock":
@@ -48,12 +76,14 @@
             break;
             
         case "rockpaper":
-            alert('You lose! Paper beats rock.')
+            alert('You lost! Paper beats rock.')
+            computerScore.textContent = "Computer: " + ( ++compTeam )
             return 'lost'
             break;
 
         case "rockscissors":
             alert('You won! Rock beats scissors.')
+            humanScore.textContent = "You: " + ( ++humanTeam )
             return 'won'
             break;
 
@@ -64,11 +94,13 @@
 
         case "paperrock":
             alert('You won! Paper beats rock.')
+            humanScore.textContent = "You: " + ( ++humanTeam )
             return 'won'
             break;
 
         case "paperscissors":
             alert('You lost! Scissors beats paper.')
+            computerScore.textContent = "Computer: " + ( ++compTeam )
             return 'lost'
             break;
 
@@ -79,11 +111,13 @@
 
         case "scissorsrock":
             alert('You lost! Rock beats scissors.')
+            computerScore.textContent = "Computer: " + ( ++compTeam )
             return 'lost'
             break;
 
         case "scissorspaper":
             alert('You won! Scissors beats paper.')
+            humanScore.textContent = "You: " + ( ++humanTeam )
             return 'won'
             break;
         
@@ -91,8 +125,6 @@
             alert('Oh no! Something went wrong. Did you input a valid selection?')
     }
     }
-
-
 
 
     
