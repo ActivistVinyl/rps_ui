@@ -16,6 +16,7 @@
         <ul>
             <li id="humanscore">You: 0</li>
             <li id="computerscore">Computer: 0</li>
+            <li id="message"></li>
         </ul>
     </div>
   
@@ -28,6 +29,7 @@
     var compTeam = 0
 
     const rpsbuttons = document.getElementById("rpsbuttons");
+    const message = document.querySelector('#message');
 
 
     // Listens for user click choice.
@@ -39,15 +41,26 @@
         playRound();
     // Stops game when someone wins.
         if (humanTeam === 3) {
-            alert('Congratulations! You won the best of 5 match!')
-            rpsbuttons.parentNode.removeChild(rpsbuttons);
+            message.textContent = 'Congratulations! You won the best of 5 match!'
+            playAgainButton();
         }
         else if (compTeam === 3) {
-            alert('Oh no! You lost the best of 5 match :(')
-            rpsbuttons.parentNode.removeChild(rpsbuttons);}
-            
+            message.textContent = 'Oh no! You lost the best of 5 match :('
+            playAgainButton();
+        }
     });
     });
+
+    // Generates the "Play Again" button at the end of the game.
+    function playAgainButton () {
+        rpsbuttons.parentNode.removeChild(rpsbuttons);
+        const playAgain = document.createElement('button');
+        playAgain.classList.add('playAgain');
+        const playAgainText = document.createElement('p');
+        playAgainText.textContent = "Play again?";
+        playAgain.appendChild(playAgainText);
+        message.appendChild(playAgain);
+    }
 
     // Randomly chooses a computer option.
     function computerPlay() {
@@ -71,63 +84,52 @@
 
         switch (playerSelection + computerSelection) {
         case "rockrock":
-            alert('You tied! Rock equals rock.')
-            return 'tied'
+            message.textContent = 'You tied! Rock equals rock.'
             break;
             
         case "rockpaper":
-            alert('You lost! Paper beats rock.')
+            message.textContent = 'You lost! Paper beats rock.'
             computerScore.textContent = "Computer: " + ( ++compTeam )
-            return 'lost'
             break;
 
         case "rockscissors":
-            alert('You won! Rock beats scissors.')
+            message.textContent = 'You won! Rock beats scissors.'
             humanScore.textContent = "You: " + ( ++humanTeam )
-            return 'won'
             break;
 
         case "paperpaper":
-            alert('You tied! Paper equals paper.')
+            message.textContent = 'You tied! Paper equals paper.'
             return 'tied'
             break;
 
         case "paperrock":
-            alert('You won! Paper beats rock.')
+            message.textContent = 'You won! Paper beats rock.'
             humanScore.textContent = "You: " + ( ++humanTeam )
-            return 'won'
             break;
 
         case "paperscissors":
-            alert('You lost! Scissors beats paper.')
+            message.textContent = 'You lost! Scissors beats paper.'
             computerScore.textContent = "Computer: " + ( ++compTeam )
-            return 'lost'
             break;
 
         case "scissorsscissors":
-            alert('You tied! Scissors equals scissors.')
-            return 'tied'
+            message.textContent = 'You tied! Scissors equals scissors.'
             break;
 
         case "scissorsrock":
-            alert('You lost! Rock beats scissors.')
+            message.textContent = 'You lost! Rock beats scissors.'
             computerScore.textContent = "Computer: " + ( ++compTeam )
-            return 'lost'
             break;
 
         case "scissorspaper":
-            alert('You won! Scissors beats paper.')
+            message.textContent = 'You won! Scissors beats paper.'
             humanScore.textContent = "You: " + ( ++humanTeam )
-            return 'won'
             break;
         
         default:
             alert('Oh no! Something went wrong. Did you input a valid selection?')
     }
     }
-
-
-    
 
   </script>
 </body>
