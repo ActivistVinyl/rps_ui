@@ -1,10 +1,10 @@
 div#rpsbuttons {
     text-align: center;
     padding-top: 109px;
+    padding-bottom: 30px;
     margin-top: 89px;
 }
 
-div#scoreboard ul{
+div#scoreboard {
     text-align: center;
-    list-style: none;
 }
