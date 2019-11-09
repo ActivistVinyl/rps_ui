@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rock, Paper, Scissors - Fight in the Console!</title>
+  <title>Rock, Paper, Scissors - Fight!</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
@@ -33,8 +33,8 @@
 
 
     // Listens for user click choice.
-    const buttons = document.querySelectorAll("button");
-    buttons.forEach((button) => {
+    const button = document.querySelectorAll("button");
+    button.forEach((button) => {
     button.addEventListener('click', (e) => {
         var humPlay = button.id;
         window.humanPlay = humPlay;
@@ -51,16 +51,49 @@
     });
     });
 
+
+
     // Generates the "Play Again" button at the end of the game.
     function playAgainButton () {
-        rpsbuttons.parentNode.removeChild(rpsbuttons);
+        rock.parentNode.removeChild(rock);
+        paper.parentNode.removeChild(paper);
+        scissors.parentNode.removeChild(scissors);
         const playAgain = document.createElement('button');
         playAgain.classList.add('playAgain');
-        const playAgainText = document.createElement('p');
-        playAgainText.textContent = "Play again?";
-        playAgain.appendChild(playAgainText);
+        playAgain.textContent = "Play Again?"
         message.appendChild(playAgain);
+
+        // Listens for reset button click and resets the game.
+        const resetbutton = document.querySelector('button.playAgain');
+        resetbutton.addEventListener('click', () => {
+            var humanTeam = 0
+            var compTeam = 0
+            const humanScore = document.querySelector('#humanscore');
+            const computerScore = document.querySelector('#computerscore');
+            computerScore.textContent = "Computer: 0"
+            humanScore.textContent = "You: 0"
+            message.textContent = ''
+
+            const rock = document.createElement('button');
+            rock.setAttribute("id", "rock");
+            rock.textContent = "Rock"
+            rpsbuttons.appendChild(rock);
+
+            const paper = document.createElement('button');
+            paper.setAttribute("id", "paper");
+            paper.textContent = "Paper"
+            rpsbuttons.appendChild(paper);
+
+            const scissors = document.createElement('button');
+            scissors.setAttribute("id", "scissors");
+            scissors.textContent = "Scissors"
+            rpsbuttons.appendChild(scissors);
+
+    });
+
     }
+
+
 
     // Randomly chooses a computer option.
     function computerPlay() {
