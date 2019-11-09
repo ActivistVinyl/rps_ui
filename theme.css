@@ -1,10 +1,173 @@
+body {
+    background-color: #ffe600;
+}
+
+h1 {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 55px;
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+p {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 25px;
+    text-align: center;
+    margin: 0px;
+}
+
 div#rpsbuttons {
     text-align: center;
-    padding-top: 109px;
+    padding-top: 40px;
     padding-bottom: 30px;
-    margin-top: 89px;
 }
 
 div#scoreboard {
     text-align: center;
 }
+
+#rpsbuttons {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#rpsbuttons > div {
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+
+button {
+    padding: 30px;
+}
+
+  #rock {
+      background-image: url(img/rock.png);
+      display: inline-block;
+      height: 198px;
+      width: 198px;
+      cursor: pointer;
+  }
+
+  #rock:hover {
+    background-image: url(img/rock.png);
+    display: inline-block;
+    height: 198px;
+    width: 198px;
+    cursor: pointer;
+    animation-name: hvr-pulse;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+  #paper {
+    background-image: url(img/paper.png);
+    display: inline-block;
+    height: 198px;
+    width: 198px;
+    cursor: pointer;
+}
+
+#paper:hover {
+    background-image: url(img/paper.png);
+    display: inline-block;
+    height: 198px;
+    width: 198px;
+    cursor: pointer;
+    animation-name: hvr-pulse;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#scissors {
+    background-image: url(img/scissors.png);
+    display: inline-block;
+    height: 198px;
+    width: 198px;
+    cursor: pointer;
+}
+
+#scissors:hover {
+    background-image: url(img/scissors.png);
+    display: inline-block;
+    height: 198px;
+    width: 198px;
+    cursor: pointer;
+    animation-name: hvr-pulse;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#scoreboard {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 35px;
+}
+
+button {
+    box-shadow: 4px 4px 0px 0px #ffe600;
+	background-color:#000000;
+	border-radius:5px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:12px 44px;
+    text-decoration:none;
+}
+
+button:hover {
+    transform: scale(1.1);
+    animation-name: hvr-pulse;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+
+/* Pulse */
+@-webkit-keyframes hvr-pulse {
+    25% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+  @keyframes hvr-pulse {
+    25% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+  .hvr-pulse {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+    -webkit-animation-name: hvr-pulse;
+    animation-name: hvr-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }

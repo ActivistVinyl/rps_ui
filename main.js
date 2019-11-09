@@ -9,7 +9,7 @@ game()
 
 function game() { 
 // Listens for user click choice.
-const button = document.querySelectorAll("button");
+const button = document.querySelectorAll("#rock, #paper, #scissors");
 button.forEach((button) => {
 button.addEventListener('click', (e) => {
     var humPlay = button.id;
@@ -18,10 +18,14 @@ button.addEventListener('click', (e) => {
 // Stops game when someone wins.
     if (humanTeam === 3) {
         message.textContent = 'Congratulations! You won the best of 5 match!'
+        const extraLine = document.createElement('div');
+        message.appendChild(extraLine);
         playAgainButton();
     }
     else if (compTeam === 3) {
-        message.textContent = 'Oh no! You lost the best of 5 match :('
+        message.textContent = 'Oh no! You lost the best of 5 match'
+        const extraLine = document.createElement('div');
+        message.appendChild(extraLine);
         playAgainButton();
     }
 });
@@ -50,19 +54,16 @@ function playAgainButton () {
         humanScore.textContent = "You: " + ( compTeam )
         message.textContent = ''
 
-        const rock = document.createElement('button');
+        const rock = document.createElement('div');
         rock.setAttribute("id", "rock");
-        rock.textContent = "Rock"
         rpsbuttons.appendChild(rock);
 
-        const paper = document.createElement('button');
+        const paper = document.createElement('div');
         paper.setAttribute("id", "paper");
-        paper.textContent = "Paper"
         rpsbuttons.appendChild(paper);
 
-        const scissors = document.createElement('button');
+        const scissors = document.createElement('div');
         scissors.setAttribute("id", "scissors");
-        scissors.textContent = "Scissors"
         rpsbuttons.appendChild(scissors);
 
         game();
