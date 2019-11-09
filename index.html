@@ -31,7 +31,9 @@
     const rpsbuttons = document.getElementById("rpsbuttons");
     const message = document.querySelector('#message');
 
+    game()
 
+    function game() { 
     // Listens for user click choice.
     const button = document.querySelectorAll("button");
     button.forEach((button) => {
@@ -50,7 +52,7 @@
         }
     });
     });
-
+}
 
 
     // Generates the "Play Again" button at the end of the game.
@@ -66,12 +68,13 @@
         // Listens for reset button click and resets the game.
         const resetbutton = document.querySelector('button.playAgain');
         resetbutton.addEventListener('click', () => {
-            var humanTeam = 0
-            var compTeam = 0
+            window.humanTeam = 0;
+            window.compTeam = 0;
+
             const humanScore = document.querySelector('#humanscore');
             const computerScore = document.querySelector('#computerscore');
-            computerScore.textContent = "Computer: 0"
-            humanScore.textContent = "You: 0"
+            computerScore.textContent = "Computer: " + ( humanTeam )
+            humanScore.textContent = "You: " + ( compTeam )
             message.textContent = ''
 
             const rock = document.createElement('button');
@@ -88,6 +91,8 @@
             scissors.setAttribute("id", "scissors");
             scissors.textContent = "Scissors"
             rpsbuttons.appendChild(scissors);
+
+            game();
 
     });
 
